@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { Layout } from "../../components/Layout";
 import { request } from "../../lib/datocms";
@@ -7,6 +7,10 @@ import { Upload } from "../../types/allUploads";
 
 type ImageByIdProps = {
   upload: Upload;
+};
+
+type AllUploads = {
+  allUploads: Array<Upload>;
 };
 
 const IMAGE_QUERY = gql`
@@ -21,7 +25,27 @@ const IMAGE_QUERY = gql`
   }
 `;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+const ALL_UPLOADS = gql`
+  query AllUploads {
+    allUploads(filter: { tags: { eq: "bg" } }) {
+      id
+    }
+  }
+`;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const data: AllUploads = await request({
+    query: ALL_UPLOADS,
+    variables: {},
+    preview: false,
+  });
+  return {
+    paths: data.allUploads.map((upload) => `/image/${upload.id}`) || [],
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { upload }: ImageByIdProps = await request({
     query: IMAGE_QUERY,
     variables: { id: params?.id },
