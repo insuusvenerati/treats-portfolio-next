@@ -15,6 +15,7 @@ export const Masonry = ({ images }: MasonryProps): JSX.Element => {
             <div key={image.responsiveImage.src} className={styles.masonry__item}>
               <Image
                 unsized
+                alt={image.responsiveImage.src}
                 sizes={image.responsiveImage.sizes}
                 src={image.responsiveImage.src}
                 className={styles.masonry__content}

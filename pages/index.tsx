@@ -33,6 +33,7 @@ export default function Home({ data }: AllUploads) {
     <>
       <Head>
         <title>Laura Norwood</title>
+        <meta name="Description" content="Portfolio for Laura Norwood" />
       </Head>
 
       <nav>
@@ -43,9 +44,9 @@ export default function Home({ data }: AllUploads) {
         </header>
         <Sidebar />
       </nav>
-      <div>
+      <main>
         <Masonry images={data.allUploads} />
-      </div>
+      </main>
     </>
   );
 }
