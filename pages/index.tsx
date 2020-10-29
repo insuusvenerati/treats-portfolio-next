@@ -1,36 +1,19 @@
-import { gql } from "graphql-request";
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import Link from "next/link";
 import { Layout } from "../components/Layout";
 import { Masonry } from "../components/Masonry";
-import { Sidebar } from "../components/Sidebar";
-import { request } from "../lib/datocms";
-import { AllUploads } from "../types/allUploads";
+import { getAllBgImages } from "../lib/queries";
+import { AllUploads } from "../types/queries";
 
-const HOMEPAGE_QUERY = gql`
-  query Homepage {
-    allUploads(filter: { tags: { eq: "bg" } }) {
-      responsiveImage {
-        sizes
-        src
-      }
-      id
-    }
-  }
-`;
+type HomeProps = {
+  data: AllUploads;
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data: AllUploads = await request({
-    query: HOMEPAGE_QUERY,
-    variables: {},
-    preview: false,
-  });
-
+  const data = await getAllBgImages();
   return { props: { data } };
 };
 
-export default function Home({ data }: AllUploads) {
+export default function Home({ data }: HomeProps) {
   return (
     <>
       <Layout>

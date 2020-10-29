@@ -8,7 +8,9 @@ export interface Upload {
 }
 
 export interface AllUploads {
-  data: {
-    allUploads: Array<Upload>;
-  };
+  allUploads: Array<Upload>;
 }
+
+export type AllBGUploads = {
+  allUploads: Array<Upload>;
+};

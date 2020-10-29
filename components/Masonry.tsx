@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Upload } from "../types/allUploads";
+import { Upload } from "../types/queries";
 import styles from "./Masonry.module.css";
 import Link from "next/link";
 
