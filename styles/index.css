@@ -1,0 +1,7 @@
+.text__large {
+  @apply text-5xl font-bold;
+}
+
+nav {
+  @apply p-2;
+}
