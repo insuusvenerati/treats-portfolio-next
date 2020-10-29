@@ -1,5 +1,6 @@
 export interface Upload {
   url?: string;
+  id?: string;
   responsiveImage: {
     sizes: string;
     src: string;
