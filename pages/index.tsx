@@ -15,12 +15,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({ data }: HomeProps) {
   return (
-    <>
-      <Layout>
-        <main>
-          <Masonry images={data.allUploads} />
-        </main>
-      </Layout>
-    </>
+    <Layout>
+      <main className="flex place-items-center justify-center">
+        <Masonry images={data.allUploads} />
+      </main>
+    </Layout>
   );
 }

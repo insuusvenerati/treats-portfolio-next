@@ -2,6 +2,17 @@ import { gql } from "graphql-request";
 import { AllUploads, Upload } from "../types/queries";
 import { request } from "./datocms";
 
+const CONTACT_QUERY = gql`
+  query Contact {
+    upload(filter: { tags: { eq: "contact" } }) {
+      responsiveImage {
+        src
+        sizes
+      }
+    }
+  }
+`;
+
 const BG_IMAGE_QUERY = gql`
   query Homepage {
     allUploads(filter: { tags: { eq: "bg" } }) {
@@ -49,6 +60,16 @@ const ALL_IMAGES_QUERY = gql`
     }
   }
 `;
+
+export async function getContactImage() {
+  const data = await request({
+    query: CONTACT_QUERY,
+    variables: {},
+    preview: false,
+  });
+
+  return data;
+}
 
 export async function getAllBgImages() {
   const data: AllUploads = await request({
