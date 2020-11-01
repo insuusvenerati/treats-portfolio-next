@@ -11,3 +11,4 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - NextJS
 - TailwindCSS
 - GraphQL Request
+- `next-offline` to enable PWA
