@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tailwindcss build ./tailwind.css -o ./styles/tailwind.css && next dev",
-    "build": "NODE_ENV=production tailwindcss build ./tailwind.css -o ./styles/tailwind.css && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
@@ -19,9 +19,11 @@
     "@tailwindcss/custom-forms": "0.2.1",
     "@types/node": "14.14.41",
     "@types/react": "16.14.5",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.12",
     "stylelint": "13.13.0",
     "stylelint-config-standard": "20.0.0",
-    "tailwindcss": "1.9.6",
+    "tailwindcss": "^2.1.2",
     "typescript": "4.2.4"
   }
 }
